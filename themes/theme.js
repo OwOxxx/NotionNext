@@ -5,7 +5,9 @@ import dynamic from 'next/dynamic'
 import getConfig from 'next/config'
 import * as ThemeComponents from '@theme-components'
 // 所有主题在next.config.js中扫描
-export const { THEMES = [] } = getConfig().publicRuntimeConfig
+// export const { THEMES = [] } = getConfig().publicRuntimeConfig
+// 我只需要两个主题，所以这里直接写死
+export const { THEMES = [] } = { THEMES: ['heo', 'gitbook','next'] }
 /**
  * 加载主题文件
  * 如果是
