@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { useGlobal } from '@/lib/global'
 import { saveDarkModeToCookies, THEMES } from '@/themes/theme'
-import BLOG from '@/blog.config'
+import BLOG, { THEME } from '@/blog.config'
 import useWindowSize from '@/hooks/useWindowSize'
 
 /**
@@ -22,6 +22,8 @@ export default function CustomContextMenu(props) {
 
   const { latestPosts } = props
   const router = useRouter()
+
+  const [changeTheme, setChangeTheme] = useState(false)
   /**
    * 随机跳转文章
    */
@@ -94,7 +96,10 @@ export default function CustomContextMenu(props) {
   * 切换主题
   */
   function handeChangeTheme() {
-    const randomTheme = THEMES[Math.floor(Math.random() * THEMES.length)] // 从THEMES数组中 随机取一个主题
+    setChangeTheme(!changeTheme)
+    // const randomTheme = THEMES[Math.floor(Math.random() * THEMES.length)] // 从THEMES数组中 随机取一个主题
+    const randomTheme = changeTheme ? THEMES[0] : THEMES[1] // 我只选了两个主题，所以这里直接切换
+    console.log('randomTheme', randomTheme, changeTheme)
     const query = router.query
     query.theme = randomTheme
     router.push({ pathname: router.pathname, query })

@@ -16,6 +16,7 @@ const ThemeSwitch = () => {
   // 修改当前路径url中的 theme 参数
   // 例如 http://localhost?theme=hexo 跳转到 http://localhost?theme=newTheme
   const onSelectChange = (e) => {
+    console.log(e)
     setIsLoading(true)
     const newTheme = e.target.value
     const query = router.query

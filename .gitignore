@@ -34,6 +34,7 @@ yarn-error.log*
 .vercel
 
 # dev
+package-lock.json
 /data.json
 /yarn.lock
 /pnpm-lock.yaml
