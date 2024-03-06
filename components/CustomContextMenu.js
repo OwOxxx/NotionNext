@@ -22,8 +22,6 @@ export default function CustomContextMenu(props) {
 
   const { latestPosts } = props
   const router = useRouter()
-
-  const [changeTheme, setChangeTheme] = useState(false)
   /**
    * 随机跳转文章
    */
