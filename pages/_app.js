@@ -27,11 +27,15 @@ import BLOG from '@/blog.config'
  */
 const MyApp = ({ Component, pageProps }) => {
   // 一些可能出现 bug 的样式，可以统一放入该钩子进行调整
-  useAdjustStyle();
+  useAdjustStyle()
 
   const route = useRouter()
   const queryParam = useMemo(() => {
-    return getQueryParam(route.asPath, 'theme') || pageProps?.NOTION_CONFIG?.THEME || BLOG.THEME
+    return (
+      getQueryParam(route.asPath, 'theme') ||
+      pageProps?.NOTION_CONFIG?.THEME ||
+      BLOG.THEME
+    )
   }, [route])
 
   // 整体布局
@@ -47,7 +51,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <GlobalContextProvider {...pageProps}>
       <GLayout {...pageProps}>
-        <GlobalHead {...pageProps}/>
+        <GlobalHead {...pageProps} />
         <Component {...pageProps} />
       </GLayout>
       <ExternalPlugins {...pageProps} />
