@@ -95,11 +95,8 @@ export default function CustomContextMenu(props) {
   /**
   * 切换主题
   */
-  function handeChangeTheme() {
-    setChangeTheme(!changeTheme)
-    // const randomTheme = THEMES[Math.floor(Math.random() * THEMES.length)] // 从THEMES数组中 随机取一个主题
-    const randomTheme = changeTheme ? THEMES[0] : THEMES[1] // 我只选了两个主题，所以这里直接切换
-    console.log('randomTheme', randomTheme, changeTheme)
+  function handleChangeTheme() {
+    const randomTheme = THEMES[Math.floor(Math.random() * THEMES.length)] // 从THEMES数组中 随机取一个主题
     const query = router.query
     query.theme = randomTheme
     router.push({ pathname: router.pathname, query })

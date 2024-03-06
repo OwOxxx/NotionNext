@@ -3,26 +3,8 @@ import { getQueryParam, getQueryVariable, isBrowser } from '../lib/utils'
 import dynamic from 'next/dynamic'
 import getConfig from 'next/config'
 import * as ThemeComponents from '@theme-components'
-
-// 在next.config.js中扫描所有主题
-// export const { THEMES = [] } = getConfig().publicRuntimeConfig
-
-// 我只需要两个主题，所以这里直接写死
-export const { THEMES = [] } = { THEMES: ['heo', 'gitbook','next'] }
-
-/**
- * 加载全局布局
- * @param {*} themeQuery
- * @returns
- */
-export const getGlobalLayoutByTheme = (themeQuery) => {
-  if (themeQuery !== BLOG.THEME) {
-    return dynamic(() => import(`@/themes/${themeQuery}`).then(m => m[getLayoutNameByPath(-1)]), { ssr: true })
-  } else {
-    return ThemeComponents[getLayoutNameByPath('-1')]
-  }
-}
-
+// 所有主题在next.config.js中扫描
+export const { THEMES = [] } = getConfig().publicRuntimeConfig
 /**
  * 加载主题文件
  * 如果是
